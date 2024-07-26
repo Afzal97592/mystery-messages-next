@@ -4,7 +4,7 @@ import bcrypt from "bcryptjs";
 import { sendVerificationEmail } from "@/app/helpers/sendVerificationEmail";
 
 export async function POST(request: Request) {
-  await dbConnect();
+  await dbConnect(); // in next we need to to connect the db on every routes
   try {
     const { username, email, password } = await request.json();
     const existingUserVerifiedByUsername = await UserModel.findOne({
